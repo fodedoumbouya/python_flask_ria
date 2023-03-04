@@ -91,7 +91,7 @@ Réponse : JSON contenant les notes qui viennent d'être ajoutées pour l'étudi
  * `/utilisateur` - Update a user   
 
     body 
-    ` { 
+    ` { \n
       "role":"admin",
       "nom":"admin",
       "prenom":"admin",

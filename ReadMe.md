@@ -1,3 +1,6 @@
+# ReadME
+
+
 # Module 1 : Liste des étudiants
 Requête : GET /etudiants
 Réponse : JSON contenant la liste de tous les étudiants avec leurs informations personnelles
@@ -36,7 +39,7 @@ Réponse : JSON contenant les informations mises à jour
 Requête : POST /utilisateur
 Réponse : JSON contenant les résultats 
 
-## Module 7 : Saisir une maquette
+# Module 7 : Saisir une maquette
 Requête : POST /curriculum
 Réponse : JSON contenant la maquette qui vient d'être créée
 
@@ -90,15 +93,14 @@ Réponse : JSON contenant les notes qui viennent d'être ajoutées pour l'étudi
  ## PUT Requests :   
  * `/utilisateur` - Update a user   
 
-    body 
-    ` { \n
+    body { 
       "role":"admin",
       "nom":"admin",
       "prenom":"admin",
       "email":"admin@gmail.com",
       "password":"1234567890",
       "tel":"0600000000" 
-      }  `
+      }  
 
  ## DELETE Requests :   
 

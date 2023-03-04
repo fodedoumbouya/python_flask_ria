@@ -90,14 +90,15 @@ Réponse : JSON contenant les notes qui viennent d'être ajoutées pour l'étudi
  ## PUT Requests :   
  * `/utilisateur` - Update a user   
 
-    body { 
+    body 
+    ` { 
       "role":"admin",
       "nom":"admin",
       "prenom":"admin",
       "email":"admin@gmail.com",
       "password":"1234567890",
       "tel":"0600000000" 
-      }  
+      }  `
 
  ## DELETE Requests :   
 

@@ -101,4 +101,4 @@ Réponse : JSON contenant les notes qui viennent d'être ajoutées pour l'étudi
 
  ## DELETE Requests :   
 
- * `delete_note<int:id> Delete note by id
+ * `delete_note<int:id>` Delete note by id

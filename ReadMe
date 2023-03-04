@@ -68,16 +68,36 @@ Réponse : JSON contenant les notes qui viennent d'être ajoutées pour l'étudi
  ## POST Requests:  
  * `/add_edt` - Add an emploi du temps  
 
-    body { "id_filiere":1,"id_cours":1,"date_debut": "2023-02-01 10:15:00","date_fin":"2023-02-5 10:15:00","type_cours":"td" }  
+    body { 
+      "id_filiere":1,
+      "id_cours":1,
+      "date_debut": "2023-02-01 10:15:00",
+      "date_fin":"2023-02-5 10:15:00",
+      "type_cours":"td"
+       }  
 
  * `/utilisateur` - Add a user  
 
-    body { "role":"admin","nom":"admin","prenom":"admin","email":"admin@gmail.com","password":"1234567890","tel":"0600000000" }  
+    body { 
+      "role":"admin",
+      "nom":"admin",
+      "prenom":"admin",
+      "email":"admin@gmail.com",
+      "password":"1234567890",
+      "tel":"0600000000"
+       }  
 
  ## PUT Requests :   
  * `/utilisateur` - Update a user   
 
-    body { "role":"admin","nom":"admin","prenom":"admin","email":"admin@gmail.com","password":"1234567890","tel":"0600000000" }  
+    body { 
+      "role":"admin",
+      "nom":"admin",
+      "prenom":"admin",
+      "email":"admin@gmail.com",
+      "password":"1234567890",
+      "tel":"0600000000" 
+      }  
 
  ## DELETE Requests :   
 

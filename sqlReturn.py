@@ -61,18 +61,21 @@ def insert(sql, data):
     resp = jsonify(constant.requestRespond(
         data="Table insert Failed!", code=400))
     resp.status_code = 400
+    id = -1
     try:
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute(sql, data)
-        conn.commit()
+        f = cursor.execute(sql, data)
+        d = conn.commit()
+        # print("insert Result ", d, f, )
+        id = cursor.lastrowid
         resp = jsonify(constant.requestRespond(
             data="Table inserted successfully!", code=200))
         resp.status_code = 200
     finally:
         cursor.close()
         conn.close()
-    return resp
+    return resp, id
 
 
 def delete(sql):

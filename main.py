@@ -7,21 +7,9 @@ from flask import flash, request
 from sqlReturn import *
 from db_config import dataName
 from utils import *
-# from werkzeug import generate_password_hash, check_password_hash
 
 
 # ---------------------------------------------------etudiants---------------------------------------------------------------------------------------------
-
-
-# @app.route('/etudiants', methods=['GET'])
-# def getStudetns():
-#     try:
-#         sql = "SELECT * FROM {0}.etudiant".format(dataName)
-#         print(sql)
-#         resp = requestSelect(sql=sql)
-#         return resp
-#     except Exception as e:
-#         return constant.resquestErrorResponse(e)
 
 '''
 {
@@ -174,35 +162,6 @@ def getUtilisateur():
         return constant.resquestErrorResponse(e)
 
 
-# @app.route('/utilisateur', methods=['PUT', 'POST'])
-# def manageUtilisateur():
-#     if not request.json:
-#         abort(400)
-#     _json = request.json
-#     # ------------- Data --------------
-#     if 'id' in _json:
-#         id = _json['id']
-#     nom = _json["nom"]
-#     prenom = _json['prenom']
-#     email = _json['email']
-#     password = _json['password']
-#     tel = _json['tel']
-#     if 'role' in _json:
-#         role = _json['role']
-
-#     if request.method == 'PUT':
-#         sql = "UPDATE {0}.utilisateur SET nom = '{1}', prenom = '{2}', email = '{3}', password = '{4}', tel = '{5}' where id_utilisateur= {6}".format(
-#             dataName, nom, prenom, email, password, tel, id)
-#         resp = update(sql)
-
-#     if request.method == 'POST':
-#         sql = "INSERT INTO {0}.utilisateur (role, nom, prenom, email, password, tel) VALUES(%s,%s,%s,%s,%s,%s)".format(
-#             dataName)
-#         data = (role, nom, prenom, email, password, tel)
-#         resp = insert(sql=sql, data=data)
-#     return resp
-
-
 # ----------------------------------------------------notes-------------------------------------------------------------------------------------------------------------
 
 # body
@@ -226,10 +185,6 @@ def addNotes():
     data = (id_utilisateur, id_cours, note)
     resp = insert(sql=sql, data=data)
     return resp
-
-# id = flask.request.values.get('id')
-#     if id == None:
-#         return constant.resquestErrorResponse(msg="Cette request a besoin d'un id")
 
 
 @app.route('/delete_note<int:id>', methods=['GET'])
@@ -334,36 +289,6 @@ def enseignant():
             return constant.resquestErrorResponse(e)
     if request.method == "POST" or request.method == "PUT":
         return manageUtilisateur(request)
-    # if request.method == 'POST':
-    #     if not request.json:
-    #         abort(400)
-    #     _json = request.json
-    #     id_utilisateur = _json['id_utilisateur']
-    #     responsabilite_ens = _json['responsabilite_ens']
-    #     volume_horaire = _json['volume_horaire']
-    #     try:
-    #         sql = "INSERT INTO {0}.enseignant (id_utilisateur, responsabilite_ens, volume_horaire) VALUES(%s,%s,%s)".format(
-    #             dataName)
-    #         data = (id_utilisateur, responsabilite_ens, volume_horaire)
-    #         resp = insert(sql=sql, data=data)
-    #         return resp
-    #     except Exception as e:
-    #         return constant.resquestErrorResponse(e)
-
-    if request.method == 'PUT':
-        if not request.json:
-            abort(400)
-        try:
-            _json = request.json
-            id_utilisateur = _json['id_utilisateur']
-            responsabilite_ens = _json['responsabilite_ens']
-            volume_horaire = _json['volume_horaire']
-            sql = "UPDATE {0}.enseignant SET responsabilite_ens = '{1}', volume_horaire = '{2}' where id_utilisateur= {3}".format(
-                dataName, responsabilite_ens, volume_horaire, id_utilisateur)
-            resp = update(sql)
-            return resp
-        except Exception as e:
-            return constant.resquestErrorResponse(e)
 
     if request.method == 'DELETE':
         try:

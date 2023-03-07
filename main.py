@@ -30,12 +30,13 @@ from utils import *
 def getStudetnById():
     if request.method == "GET":
         id = flask.request.values.get('id')
+
         try:
             if id == None:
                 sql = "SELECT * FROM {0}.etudiant".format(
                     dataName)
             else:
-                sql = "SELECT * FROM {0}.etudiant id_utilisateur={1}".format(
+                sql = "SELECT * FROM {0}.etudiant where id_utilisateur={1}".format(
                     dataName, id)
             resp = requestSelect(sql=sql)
             return resp
@@ -45,10 +46,15 @@ def getStudetnById():
         return manageUtilisateur(request)
 
 
-@app.route('/etudiantNote/<int:id>', methods=['GET'])
-def getStudetnNoteById(id):
+@app.route('/etudiantNote', methods=['GET'])
+def getStudetnNoteById():
+    id = flask.request.values.get('id')
+    if id == None:
+        return constant.resquestErrorResponse("La request a besoin d'un Id")
     try:
-        sql = "SELECT * FROM {0}.notes id_utilisateur={1}".format(dataName, id)
+
+        sql = "SELECT * FROM {0}.note where id_utilisateur={1}".format(
+            dataName, id)
         resp = requestSelect(sql=sql)
         return resp
     except Exception as e:
@@ -87,8 +93,11 @@ def getFilieres():
         return constant.resquestErrorResponse(e)
 
 
-@app.route('/etudiant/<int:id>/filiere', methods=['GET'])
-def getStudentFiliere(id):
+@app.route('/etudiant_filiere', methods=['GET'])
+def getStudentFiliere():
+    id = flask.request.values.get('id')
+    if id == None:
+        return constant.resquestErrorResponse("La request a besoin d'un Id")
     try:
         # _json = request.json
         # id = _json["id"]
@@ -105,8 +114,11 @@ def getStudentFiliere(id):
 # ----------------------------------------------------Emploi du temps---------------------------------------------------------------------------
 
 
-@app.route('/edt/<int:id>/etudiant', methods=['GET'])
-def getEtudiantEDT(id):
+@app.route('/edt_etudiant', methods=['GET'])
+def getEtudiantEDT():
+    id = flask.request.values.get('id')
+    if id == None:
+        return constant.resquestErrorResponse("La request a besoin d'un Id")
     try:
         sql = "SELECT  * FROM {0}.edt INNER JOIN {0}.etudiant on {0}.etudiant.id_filiere = {0}.edt.id_filiere where {0}.etudiant.id_utilisateur= {1}".format(
             dataName, id)
@@ -148,6 +160,8 @@ def add_edt():
 @app.route('/utilisateur', methods=['GET'])
 def getUtilisateur():
     id = flask.request.values.get('id')
+    if id == None:
+        return constant.resquestErrorResponse("La request a besoin d'un Id")
     try:
         if id == None:
             sql = "SELECT  * FROM {0}.utilisateur ".format(
@@ -187,9 +201,11 @@ def addNotes():
     return resp
 
 
-@app.route('/delete_note<int:id>', methods=['GET'])
-def DeleteNote(id):
-
+@app.route('/delete_note', methods=['GET'])
+def DeleteNote():
+    id = flask.request.values.get('id')
+    if id == None:
+        return constant.resquestErrorResponse("La request a besoin d'un Id")
     try:
         sql = "DELETE FROM {0}.note WHERE id_note = {1}".format(
             dataName, id)
@@ -206,6 +222,8 @@ def DeleteNote(id):
 def cours():
     if request.method == 'GET':
         id = flask.request.values.get('id')
+        if id == None:
+            return constant.resquestErrorResponse("La request a besoin d'un Id")
         try:
             if id == None:
                 sql = "SELECT * from {0}.cours".format(dataName)
